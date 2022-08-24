@@ -13,17 +13,21 @@ var carouselElAnchor = 0;
 
 var creditPos = 0;
 
+function handleCarouselWheel(evt){
+    var carouselEl = document.getElementById("carousel");
+    if (carouselEl.scrollLeft <= 30 && evt.deltaY < 0){
+    }
+    else{
+        if (Math.abs(carouselEl.getBoundingClientRect().top) < 5){
+            evt.preventDefault();
+            carouselEl.scrollBy(evt.deltaX + evt.deltaY, 0);
+        }
+    }
+}
+
 window.addEventListener("wheel", (evt) => {
     if (carouselIsHovered){
-        var carouselEl = document.getElementById("carousel");
-        if (carouselEl.scrollLeft <= 30 && evt.deltaY < 0){
-        }
-        else{
-            if (Math.abs(carouselEl.getBoundingClientRect().top) < 5){
-                evt.preventDefault();
-                carouselEl.scrollBy(evt.deltaX + evt.deltaY, 0);
-            }
-        }
+        handleCarouselWheel(evt);
     }
     scrollies.forEach((item, i) => {
         if (Math.abs(item.el.getBoundingClientRect().top) <= Math.abs(evt.deltaY) * 2 && (item.position > 0 || evt.deltaY > 0) && (item.position < 3000 || evt.deltaY < 0)){
@@ -73,4 +77,14 @@ window.addEventListener("load", () => {
         });
     });
     carouselElAnchor = document.getElementById("carousel").getBoundingClientRect().top;
+});
+
+var lastScrollpos = 0;
+
+document.getElementById("main").addEventListener("scroll", (event) => {
+    var newEvent = new Event("MouseEvents");
+    newEvent.initEvent("wheel", true, true);
+    newEvent.deltaY = document.getElementById("main").scrollTop - lastScrollpos;
+    window.dispatchEvent(newEvent);
+    lastScrollpos = document.getElementById("main").scrollTop;
 });

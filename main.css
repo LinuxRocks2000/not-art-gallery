@@ -48,7 +48,7 @@ body{
     display: none;
 }
 
-#main, #carousel{
+#carousel{
     -ms-overflow-style: none;
     scrollbar-width: none;
 }
