@@ -88,3 +88,7 @@ document.getElementById("main").addEventListener("scroll", (event) => {
     window.dispatchEvent(newEvent);
     lastScrollpos = document.getElementById("main").scrollTop;
 });
+
+window.addEventListener("keydown", (event) => {
+    event.preventDefault();
+});
