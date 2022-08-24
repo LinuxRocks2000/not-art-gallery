@@ -35,14 +35,13 @@ window.addEventListener("wheel", (evt) => {
         }
     }
     scrollies.forEach((item, i) => {
-        console.log(evt.deltaY);
         if (Math.abs(item.el.getBoundingClientRect().top) <= Math.abs(evt.deltaY) * 2 && (item.position > 0 || evt.deltaY > 0) && (item.position < 3000 || evt.deltaY < 0)){
+            evt.preventDefault();
             document.getElementById("main").scrollBy(0, item.el.getBoundingClientRect().top);
             if (!item.el.classList.contains("gradient-scrolly-fixed")){
                 item.el.classList.add("gradient-scrolly-fixed");
                 document.getElementById("main").style.overflow = "hidden";
             }
-            evt.preventDefault();
             item.position += evt.deltaY;
             item.el.style.opacity = (100 - item.position/30) + "%";
         }
