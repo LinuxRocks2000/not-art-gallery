@@ -11,6 +11,8 @@ var scrollies = [];
 
 var carouselElAnchor = 0;
 
+var creditPos = 0;
+
 window.addEventListener("wheel", (evt) => {
     if (carouselIsHovered){
         var carouselEl = document.getElementById("carousel");
@@ -20,6 +22,8 @@ window.addEventListener("wheel", (evt) => {
             if (Math.abs(carouselEl.getBoundingClientRect().top) < 5){
                 evt.preventDefault();
                 carouselEl.scrollBy(evt.deltaX + evt.deltaY, 0);
+                creditPos += evt.deltaX + evt.deltaY;
+                document.getElementById("cred").style.transform = "translate(0, " + (Math.cos(creditPos/1000) * window.innerHeight * 0.4 - (window.innerHeight/2)) + "px)";
             }
         }
     }
@@ -33,7 +37,6 @@ window.addEventListener("wheel", (evt) => {
             item.position += evt.deltaY;
             var greyPercent = (100 - item.position/30)/100;
             var greyVal = greyPercent * 255;
-            console.log(greyPercent);
             item.el.style.backgroundColor = "rgb(" + greyVal + ", " + greyVal + ", " + greyVal + ")";
         }
         else{
