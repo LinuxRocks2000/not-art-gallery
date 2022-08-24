@@ -1,3 +1,15 @@
+@keyframes bounce {
+    0%, 50%{
+        transform: translate(0, 0);
+    }
+    75%{
+        transform: translate(0, -20px);
+    }
+    100%{
+        transform: translate(0, 20px);
+    }
+}
+
 .image{
     display: inline-block;
     position: relative;
@@ -125,4 +137,13 @@ p{
 .gradient-scrolly{
     height: 120vh;
     background-color: white;
+}
+
+#bouncy{
+    animation-name: bounce;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-delay: 5s;
+    animation-direction: alternate;
+    display: inline-block;
 }
