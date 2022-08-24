@@ -15,7 +15,8 @@ window.addEventListener("wheel", (evt) => {
             //alert("tuba");
         }
         else{
-            if (Math.abs(carouselEl.getBoundingClientRect().top) < 30){
+            if (Math.abs(carouselEl.getBoundingClientRect().top) < 5){
+                console.log(Math.abs(carouselEl.getBoundingClientRect().top));
                 evt.preventDefault();
                 carouselEl.scrollBy(evt.deltaX + evt.deltaY, 0);
             }
@@ -30,6 +31,11 @@ window.addEventListener("wheel", (evt) => {
 function openShadowbox(el){
     document.getElementById("shadowbox").children[0].src = el.src;
     document.getElementById("shadowbox").classList.remove("hidden");
+    var rect = el.getBoundingClientRect();
+    document.getElementById("carousel").scrollBy({
+        left: rect.left + rect.width/2 - window.innerWidth/2,
+        behavior: "smooth"
+    });
 }
 
 Array.from(document.getElementsByClassName("image")).forEach((el, i) => {

@@ -1,11 +1,15 @@
 .image{
     display: inline-block;
     position: relative;
+    padding-left: 5vw;
+    padding-right: 5vw;
+    padding-top: 5vh;
+    padding-bottom: 5vh;
 }
 
 .image > img{
-    max-height: 80vh;
-    max-width: 80vw;
+    max-height: 70vh;
+    max-width: 70vw;
 }
 
 .image:after{
@@ -13,8 +17,9 @@
     display: inline-block;
     box-shadow: inset 0 0 50px 50px black;
     left: 0px;
-    width: 100%;
-    height: 100%;
+    width: calc(100% - 10vw);
+    margin-left: 5vw;
+    height: calc(100% - 10vh);
     position: absolute;
     transition: box-shadow 1s;
 }
@@ -25,6 +30,15 @@
 
 body{
     background-color: black;
+}
+
+#main::-webkit-scrollbar, #carousel::-webkit-scrollbar{
+    display: none;
+}
+
+#main, #carousel{
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 
 #carousel{
@@ -41,6 +55,7 @@ body{
 *{
     margin: 0px;
     padding: 0px;
+    font-family: sans-serif;
 }
 
 #topstuff{
@@ -79,12 +94,15 @@ body{
     padding-right: 5vw;
     padding-top: 5vh;
     padding-bottom: 5vh;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.7);
 }
 
 #shadowbox > img{
     max-width: 100%;
     max-height: 100%;
+    position: relative;
+    top: 50%;
+    transform: translate(0, -50%);
 }
 
 #main{
@@ -95,4 +113,11 @@ body{
 
 .hidden{
     display: none;
+}
+
+p{
+    text-align: left;
+    margin-top: 1em;
+    border-left: 2px solid blue;
+    padding-left: 20px;
 }
