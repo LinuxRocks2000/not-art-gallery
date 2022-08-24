@@ -75,10 +75,10 @@ body{
     transform: translate(-50%, -50%);
     text-align: center;
     box-sizing: border-box;
-    padding-left: 10vw;
-    padding-right: 10vw;
-    padding-top: 10vh;
-    padding-bottom: 10vh;
+    padding-left: 5vw;
+    padding-right: 5vw;
+    padding-top: 5vh;
+    padding-bottom: 5vh;
     background-color: rgba(0, 0, 0, 0.5);
 }
 
