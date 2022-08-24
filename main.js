@@ -17,13 +17,15 @@ window.addEventListener("wheel", (evt) => {
     if (carouselIsHovered){
         var carouselEl = document.getElementById("carousel");
         if (carouselEl.scrollLeft <= 30 && evt.deltaY < 0){
+            document.getElementById("cred").style.transform = "";
+            creditPos = 0;
         }
         else{
             if (Math.abs(carouselEl.getBoundingClientRect().top) < 5){
                 evt.preventDefault();
                 carouselEl.scrollBy(evt.deltaX + evt.deltaY, 0);
                 creditPos += evt.deltaX + evt.deltaY;
-                document.getElementById("cred").style.transform = "translate(0, " + (Math.cos(creditPos/1000) * window.innerHeight * 0.4 - (window.innerHeight/2)) + "px)";
+                document.getElementById("cred").style.transform = "translate(-50%, " + (Math.sin(creditPos/1000) * window.innerHeight * 0.4 - (window.innerHeight * 0.5)) + "px)";
             }
         }
     }
