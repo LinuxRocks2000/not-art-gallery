@@ -147,3 +147,16 @@ p{
     animation-direction: alternate;
     display: inline-block;
 }
+
+#cred{
+    text-align: center;
+    position: absolute;
+    top: 90%;
+    left: 50%;
+    transform: translate(-50%, -100%); /* I must say I love this SO-based trick */
+    font-size: 0.8em;
+}
+
+#cred > span{
+    color: white;
+}

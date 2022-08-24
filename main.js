@@ -9,23 +9,18 @@ function carouselUnhovered(){
 
 var scrollies = [];
 
+var carouselElAnchor = 0;
+
 window.addEventListener("wheel", (evt) => {
     if (carouselIsHovered){
         var carouselEl = document.getElementById("carousel");
         if (carouselEl.scrollLeft <= 30 && evt.deltaY < 0){
-            //document.body.scrollTo(0, carouselEl.getBoundingClientRect().top);
-            //alert("tuba");
         }
         else{
             if (Math.abs(carouselEl.getBoundingClientRect().top) < 5){
-                console.log(Math.abs(carouselEl.getBoundingClientRect().top));
                 evt.preventDefault();
                 carouselEl.scrollBy(evt.deltaX + evt.deltaY, 0);
             }
-            /*document.documentElement.scrollTo({
-                top: document.documentElement.scrollHeight,
-                behavior : "smooth"
-            });*/
         }
     }
     scrollies.forEach((item, i) => {
@@ -36,7 +31,10 @@ window.addEventListener("wheel", (evt) => {
                 item.el.classList.add("gradient-scrolly-fixed");
             }
             item.position += evt.deltaY;
-            item.el.style.opacity = (100 - item.position/30) + "%";
+            var greyPercent = (100 - item.position/30)/100;
+            var greyVal = greyPercent * 255;
+            console.log(greyPercent);
+            item.el.style.backgroundColor = "rgb(" + greyVal + ", " + greyVal + ", " + greyVal + ")";
         }
         else{
             if (item.el.classList.contains("gradient-scrolly-fixed")){
@@ -73,4 +71,5 @@ window.addEventListener("load", () => {
             lockPos: item.getBoundingClientRect().top
         });
     });
+    carouselElAnchor = document.getElementById("carousel").getBoundingClientRect().top;
 });
