@@ -8,12 +8,6 @@ function carouselUnhovered(){
 }
 
 var scrollies = [];
-Array.from(document.getElementsByClassName("gradient-scrolly")).forEach((item, i) => {
-    scrollies.push({
-        el: item,
-        position: 0
-    });
-});
 
 window.addEventListener("wheel", (evt) => {
     if (carouselIsHovered){
@@ -36,11 +30,10 @@ window.addEventListener("wheel", (evt) => {
     }
     scrollies.forEach((item, i) => {
         if (Math.abs(item.el.getBoundingClientRect().top) <= Math.abs(evt.deltaY) * 2 && (item.position > 0 || evt.deltaY > 0) && (item.position < 3000 || evt.deltaY < 0)){
+            document.getElementById("main").scrollTo(0, item.lockPos);
             evt.preventDefault();
-            document.getElementById("main").scrollBy(0, item.el.getBoundingClientRect().top);
             if (!item.el.classList.contains("gradient-scrolly-fixed")){
                 item.el.classList.add("gradient-scrolly-fixed");
-                document.getElementById("main").style.overflow = "hidden";
             }
             item.position += evt.deltaY;
             item.el.style.opacity = (100 - item.position/30) + "%";
@@ -48,7 +41,6 @@ window.addEventListener("wheel", (evt) => {
         else{
             if (item.el.classList.contains("gradient-scrolly-fixed")){
                 item.el.classList.remove("gradient-scrolly-fixed");
-                document.getElementById("main").style.overflow = "";
             }
         }
     });
@@ -74,4 +66,11 @@ document.getElementById("shadowbox").onclick = () => {
 
 window.addEventListener("load", () => {
     document.getElementById("main").scrollTo(0, 0); // Scroll up, because we don't want people to be in the art immediately at the start
+    Array.from(document.getElementsByClassName("gradient-scrolly")).forEach((item, i) => {
+        scrollies.push({
+            el: item,
+            position: 0,
+            lockPos: item.getBoundingClientRect().top
+        });
+    });
 });
