@@ -30,14 +30,14 @@ window.addEventListener("wheel", (evt) => {
         handleCarouselWheel(evt);
     }
     scrollies.forEach((item, i) => {
-        if (Math.abs(item.el.getBoundingClientRect().top) <= Math.abs(evt.deltaY) * 2 && (item.position > 0 || evt.deltaY > 0) && (item.position < 3000 || evt.deltaY < 0)){
+        if (Math.abs(item.el.getBoundingClientRect().top) <= Math.abs(evt.deltaY) * 2 && (item.position > 0 || evt.deltaY > 0) && (item.position < 1000 || evt.deltaY < 0)){
             document.getElementById("main").scrollTo(0, item.lockPos);
             evt.preventDefault();
             if (!item.el.classList.contains("gradient-scrolly-fixed")){
                 item.el.classList.add("gradient-scrolly-fixed");
             }
             item.position += evt.deltaY;
-            var greyPercent = (100 - item.position/30)/100;
+            var greyPercent = (100 - item.position/10)/100;
             var greyVal = greyPercent * 255;
             item.el.style.backgroundColor = "rgb(" + greyVal + ", " + greyVal + ", " + greyVal + ")";
         }
