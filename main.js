@@ -45,3 +45,7 @@ Array.from(document.getElementsByClassName("image")).forEach((el, i) => {
 document.getElementById("shadowbox").onclick = () => {
     document.getElementById("shadowbox").classList.add("hidden");
 };
+
+Array.from(document.getElementsByClassName("gradient-scrolly")).forEach((gradient, i) => {
+
+});
