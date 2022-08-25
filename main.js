@@ -134,9 +134,9 @@ document.getElementById("main").addEventListener("scroll", (event) => {
 });
 
 window.addEventListener("keydown", (event) => {
-    if (event.key.startsWith("Arrow")){
+    //if (event.key.startsWith("Arrow")){
         event.preventDefault();
-    }
+    //}
 });
 
 var doesHaveImage = false;
