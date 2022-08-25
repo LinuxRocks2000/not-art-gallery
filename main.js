@@ -157,6 +157,11 @@ document.getElementById("submitFileInput").onchange = (evt) => {
         alert("Your image is too large! The cap is 3 megabytes.");
         doesHaveImage = false;
     }
+    else if (["image/jpeg", "image/png"].indexOf(evt.target.files[0].type) == -1){
+        evt.target.value = null;
+        alert("Incorrect format!");
+        doesHaveImage = false;
+    }
     else{
         doesHaveImage = true;
         document.getElementById("filepreview").src = URL.createObjectURL(evt.target.files[0]);
