@@ -97,7 +97,7 @@ body{
 
 .gradient-down{
     height: 40vh;
-    background-image: linear-gradient(black, white);
+    background-image: linear-gradient(transparent, white);
 }
 
 body{
@@ -166,8 +166,62 @@ p{
     left: 50%;
     transform: translate(-50%, -100%); /* I must say I love this SO-based trick */
     font-size: 0.8em;
+    z-index: 0;
 }
 
 #cred > span{
     color: white;
+}
+
+#understuff{
+    padding-left: 20vw;
+    padding-right: 20vw;
+    padding-top: 20vh;
+    padding-bottom: 20vh;
+    background-color: white;
+}
+
+input[type="file"]{
+    display: none;
+}
+
+#submitFile, #submitbutton{
+    background-color: lightblue;
+    padding: 10px;
+    box-sizing: border-box;
+    display: inline-block;
+}
+
+#submitFile:hover, #submitbutton:hover{
+    background-color: blue;
+}
+
+#filepreview{
+    max-width: 10vw;
+    padding-top: 10px;
+}
+
+img[src=""]{
+    display: none;
+    height: 0px;
+}
+
+#submitbutton{
+    border: none;
+    display: block;
+}
+
+#submittedDongle{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50vw;
+    height: 50vh;
+    text-align: center;
+    border-radius: 20px;
+    border: 1px solid black;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 100px;
+    z-index: 100;
 }

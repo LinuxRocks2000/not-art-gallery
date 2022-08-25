@@ -45,11 +45,11 @@
                 <span id="bouncy" style="font-family:monospace;color:green;background-color:lightblue;">[Scroll Down (two fingers)]</span>
             </div>
             <div class="gradient-scrolly">
-                <div id="cred">
-                    Site designed and developed by Tyler Clarke<br>
-                    <span>Art by Tyler Clarke and Grant Rajesh</span><br>
-                    Initial idea by Grant Rajesh
-                </div>
+            </div>
+            <div id="cred">
+                Site designed and developed by Tyler Clarke<br>
+                <span>Art by Tyler Clarke and Grant Rajesh</span><br>
+                Initial idea by Grant Rajesh
             </div>
             <div id="carousel" onmouseover = "carouselHovered()" onmouseleave = "carouselUnhovered()">
                 <div class = "image">
@@ -117,10 +117,29 @@
                     <img src="res/looking impressive standing next to it.png"/>
                 </div>
             </div>
+            <div class="gradient-down" style="z-index: 1;position:relative;"></div>
+            <div id="understuff" style="z-index: 2;position:relative;">
+                <p>
+                    Want to contribute to the Not Art Gallery? Send us your name and an image, and we'll add it!<br>
+                    Remember: <b>your submission absolutely <i>must</i> be appropriate for children.</b> Read the note at the top of the site for more.<br>
+                </p>
+                <p>
+                    <input type="text" id="urname" placeholder="Your name"></input><br>
+                    <label id = "submitFile" for="submitFileInput">Upload your image</label>
+                    <input type="file" id="submitFileInput" accept="image/png, image/jpeg"/><br>
+                    <img id="filepreview" src="">
+                    <button id="submitbutton" onclick="sendimage()" style="display: none;">Send</button>
+                </p>
+            </div>
         </div>
         <div id="shadowbox" class="hidden">
             <img src="foo"/>
         </div>
+        <div id="submittedDongle" style="display: none">
+            <span style="font-size: 1.3em;">Submitted your image!</span><br>
+            It will probably be on the site in less than two weeks, but we don't make any guarantees. This is barely a hobby project, more of just a joke, so we probably aren't going to check the mailbox too often.
+        </div>
+        <script src="https://npmcdn.com/parse/dist/parse.min.js"></script>
         <script src="main.js">
 
         </script>
