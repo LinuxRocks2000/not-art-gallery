@@ -13,37 +13,6 @@ var carouselElAnchor = 0;
 
 var creditPos = 0;
 
-/*function handleWheel(evt){
-    var carouselEl = document.getElementById("carousel");
-    if (carouselIsHovered){*/
-        //if (((carouselEl.scrollLeft <= 30/* && evt.deltaY < 0*/) || (carouselEl.scrollLeft > carouselEl.scrollWidth - window.innerWidth - 30 && evt.deltaY > 0))/* || (Math.abs(carouselEl.getBoundingClientRect().top) > 10)*/){
-            //carouselEl.scrollBy(-evt.deltaX, 0); // Undo the effect of scrolling sideways
-        //}
-        //else{
-            //if (carouselEl.getBoundingClientRect().top < 5){
-                //evt.preventDefault();
-                /*if (carouselEl.scrollLeft < carouselEl.scrollWidth - window.innerWidth - 10){
-                }
-                else if (carouselEl.getBoundingClientRect().top + evt.deltaY > 0){
-                    document.getElementById("main").scrollBy(0, evt.deltaY);
-                }*/
-            //}
-            //if (carouselEl.getBoundingClientRect().top < 0){
-            //evt.preventDefault();
-            //document.getElementById("main").scrollTo(0, carouselElAnchor);
-            //}
-            //carouselEl.scrollBy(evt.deltaX + evt.deltaY, 0);
-            //document.getElementById("main").scrollTo(0, carouselElAnchor);
-        //}
-    //}
-    //if ((((carouselEl.scrollLeft > carouselEl.scrollWidth - window.innerWidth - 30) && carouselEl.getBoundingClientRect().top > 0) || (carouselEl.scrollLeft < 30 && carouselEl.getBoundingClientRect().top < 0))){
-        //document.getElementById("main").scrollTo(0, carouselElAnchor);
-    //}
-    /*if ( && carouselEl.getBoundingClientRect().top < 0){
-        document.getElementById("main").scrollTo(0, carouselElAnchor);
-    }*/
-//}
-
 function handleWheel(evt){
     evt.preventDefault();
     var carouselEl = document.getElementById("carousel");
