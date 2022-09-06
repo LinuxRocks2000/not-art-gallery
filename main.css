@@ -143,6 +143,11 @@ p{
     margin-top: 1em;
     border-left: 2px solid blue;
     padding-left: 20px;
+    transition: padding-left 1s;
+}
+
+p:hover{
+    padding-left: 40px;
 }
 
 .gradient-scrolly{
