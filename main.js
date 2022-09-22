@@ -13,6 +13,19 @@ var carouselElAnchor = 0;
 
 var creditPos = 0;
 
+function getAnchor(el){
+    var node = el;
+    var pos = 0;
+    while (node){
+        if (node.offsetTop){
+            pos += node.offsetTop;
+        }
+        node = node.parentNode;
+    }
+    console.log(pos);
+    return pos;
+}
+
 function handleWheel(evt){
     evt.preventDefault();
     var carouselEl = document.getElementById("carousel");
@@ -28,22 +41,21 @@ function handleWheel(evt){
     if (doAllowScroll){
         mainEl.scrollBy(0, evt.deltaY);
     }
-    if ((onSideLeft && carouselEl.getBoundingClientRect().top < 0) || (onSideRight && carouselEl.getBoundingClientRect().top > 0)){
-        mainEl.scrollTo(0, carouselElAnchor);
-    }
     if (isOnCarousel){
         carouselEl.scrollBy(evt.deltaX + evt.deltaY, 0);
     }
     if (!isOnCarousel && !inPipeLeft && !inPipeRight){
-        mainEl.scrollTo(0, carouselElAnchor);
+        mainEl.scrollBy(0, carouselEl.getBoundingClientRect().top, {
+            behavior: "instant"
+        });
     }
 }
 
-window.addEventListener("wheel", (evt) => {
-    handleWheel(evt);
+var onWheel = (evt) => {
+    var wasInScrolly = false;
     scrollies.forEach((item, i) => {
         if (Math.abs(item.el.getBoundingClientRect().top) <= Math.abs(evt.deltaY) * 2 && (item.position > 0 || evt.deltaY > 0) && (item.position < 1000 || evt.deltaY < 0)){
-            document.getElementById("main").scrollTo(0, item.lockPos);
+            document.getElementById("main").scrollTo(0, getAnchor(item.el));
             evt.preventDefault();
             if (!item.el.classList.contains("gradient-scrolly-fixed")){
                 item.el.classList.add("gradient-scrolly-fixed");
@@ -52,6 +64,7 @@ window.addEventListener("wheel", (evt) => {
             var greyPercent = (100 - item.position/10)/100;
             var greyVal = greyPercent * 255;
             item.el.style.backgroundColor = "rgb(" + greyVal + ", " + greyVal + ", " + greyVal + ")";
+            wasInScrolly = true;
         }
         else{
             if (item.el.classList.contains("gradient-scrolly-fixed")){
@@ -59,6 +72,29 @@ window.addEventListener("wheel", (evt) => {
             }
         }
     });
+    if (!wasInScrolly){
+        handleWheel(evt);
+    }
+};
+
+var lastTouchScrollPos = {x: 0, y: 0};
+
+window.addEventListener("wheel", onWheel, {passive: false});
+
+window.addEventListener("touchstart", (evt) => {
+    lastTouchScrollPos.x = evt.touches[0].pageX;
+    lastTouchScrollPos.y = evt.touches[0].pageY;
+});
+
+window.addEventListener("touchmove", (evt) => {
+    evt.preventDefault();
+    onWheel({
+        preventDefault: () => {},
+        deltaX: lastTouchScrollPos.x - evt.touches[0].pageX,
+        deltaY: lastTouchScrollPos.y - evt.touches[0].pageY
+    });
+    lastTouchScrollPos.x = evt.touches[0].pageX;
+    lastTouchScrollPos.y = evt.touches[0].pageY;
 }, {passive: false});
 
 function openShadowbox(el){
@@ -85,8 +121,7 @@ window.addEventListener("load", () => {
     Array.from(document.getElementsByClassName("gradient-scrolly")).forEach((item, i) => {
         scrollies.push({
             el: item,
-            position: 0,
-            lockPos: item.getBoundingClientRect().top
+            position: 0
         });
     });
     carouselElAnchor = document.getElementById("carousel").getBoundingClientRect().top;

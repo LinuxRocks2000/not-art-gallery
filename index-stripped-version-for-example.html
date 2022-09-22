@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>And I'll make a title out of you (indeed, my Mulan references are "cringe")</title>
+        <link rel="stylesheet" href="main.css" />
+    </head>
+    <body>
+        <div id="main">
+            <div id="topstuff">
+                <h1>Sample Page that totally wasn't once Not Art Gallery</h1>
+                <h2>
+                    A secondary heading.
+                </h2>
+                <p>
+                    This used to be some text in a P, but I decided to replace it with a baseball ipsum (there's a lot of these out there). Baseball ipsum dolor sit amet passed ball outs, sweep stretch bleeder triple play. Left fielder count fair swing cork balk ball. Full count southpaw reliever lineup crooked number fastball second base. Perfect game outfielder rally force dodgers right fielder dead ball era right field. Pickoff world series peanuts batting average cup of coffee foul inside robbed. Bleeder club appeal first base sidearm mustard steal line drive inning.
+                </p>
+                <p>
+                    There was once more P text here. I like the... british ipsum? more. Pommy ipsum 221B Baker Street ey up chuck down the local chap beefeater, guinness nosh jammy git put me soaps back on bowler hat complete mare spend a penny, accordingly rambunctious middle class well chuffed lass. Cheesed off ask your mother if a tenner a right corker in the goolies marmite devonshire cream tea, black pudding horses for courses pot noodle gobsmacked pillock. Done up like a kipper Bob's your uncle half-inch it a tad a right toff sling one's hook, gallivanting around houlligan Time Lord. Yorkshire pudding gosh biscuits Southeners cor blimey' nigh, knows bugger all about nowt sausage roll gobsmacked pork dripping.
+                </p>
+                <p>
+                    Used to be a single sentence instead of a full paragraph. To reflect, I've cut down the ipsum. Lorem ipsum dolor sit amet.
+                </p>
+                <span id="bouncy" style="font-family:monospace;color:green;background-color:lightblue;">[Scroll Down (two fingers)]</span>
+            </div>
+            <div class="gradient-scrolly">
+            </div>
+            <div id="cred">
+                First line of the credits - these are really cool on the full site<br>
+                <span>Second credits line (also cool)</span><br>
+                Not that cliche, kinda cool still
+            </div>
+            <div id="carousel" onmouseover = "carouselHovered()" onmouseleave = "carouselUnhovered()">
+                <div class = "image">
+                    A piece of art!
+                    <img src="res/art.png"/>
+                </div>
+                <div class = "image">
+                    A piece of art!
+                    <img src="res/art1.png"/>
+                </div>
+                <div class = "image">
+                    A piece of art!
+                    <img src="res/art2.png"/>
+                </div>
+                <div class = "image">
+                    A piece of art!
+                    <img src="res/art3.png"/>
+                </div>
+                <div class = "image">
+                    A piece of art!
+                    <img src="res/art4.png"/>
+                </div>
+                <div class = "image">
+                    A piece of art!
+                    <img src="res/art5.png"/>
+                </div>
+                <div class = "image">
+                    A piece of art!
+                    <img src="res/art6.png"/>
+                </div>
+            </div>
+            <div class="gradient-down" style="z-index: 1;position:relative;"></div>
+            <div id="understuff" style="z-index: 2;position:relative;">
+                <p>
+                    A little piece on contributing to this site<br>
+                    Some <b>rules</b> on submission<br>
+                </p>
+                <p>
+                    <input type="text" id="urname" placeholder="Your name"></input><br>
+                    <label id = "submitFile" for="submitFileInput">Upload your image</label>
+                    <input type="file" id="submitFileInput" accept="image/png, image/jpeg"/><br>
+                    <img id="filepreview" src="">
+                    <button id="submitbutton" onclick="sendimage()" style="display: none;">Send</button>
+                </p>
+            </div>
+        </div>
+        <div id="shadowbox" class="hidden">
+            <img src="foo"/>
+        </div>
+        <div id="submittedDongle" style="display: none">
+            <span style="font-size: 1.3em;">Generic "your submission is complete" text!</span><br>
+            Some explanatory text about your submission!
+        </div>
+        <script src="https://npmcdn.com/parse/dist/parse.min.js"></script>
+        <script src="main.js">
+
+        </script>
+    </body>
+</html>
